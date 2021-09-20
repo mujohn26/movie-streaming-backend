@@ -10,5 +10,12 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(400)
       expect(response.parsed_body['error']).to eq "email and password required"
     end
+
+    it 'registers successfully' do
+      post :create, params: {email:"email@email.com", password:"password123"}
+
+      expect(response).to have_http_status(201)
+      expect(response.parsed_body['email']).to eq "email@email.com"
+    end
   end
 end
