@@ -34,5 +34,11 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(400)
       expect(response.parsed_body['error']).to eq "user already exists"
     end
+
+    it 'restricts user object' do
+      post :create, params: params['complete_params']
+
+      expect(response.parsed_body.keys).to match_array(%w[email first_name last_name])
+    end
   end
 end

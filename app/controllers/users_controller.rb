@@ -6,9 +6,8 @@ class UsersController < ApplicationController
     else
       user = User.new(user_params)
       if user.save
-        render json: user.as_json, status: 201
+        render json: user.as_json(only: user_attributes), status: 201
       else
-        puts user.errors.as_json
         render json: {error:"user already exists"}, status: 400
       end
     end
@@ -16,7 +15,12 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(%w[email password])
+    password_hash = Hashes::PasswordHash.hash(params['password'])
+    params.permit(user_attributes).slice(*user_attributes).merge({password: password_hash})
+  end
+
+  def user_attributes
+    %w[first_name last_name email]
   end
 
   def has_no_params?
