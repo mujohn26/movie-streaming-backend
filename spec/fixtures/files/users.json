@@ -1,0 +1,16 @@
+{
+  "complete_params": {
+    "first_name": "Paul",
+    "last_name": "Kyla",
+    "email": "email@email.com",
+    "password": "password123*"
+  },
+  "email_password": {
+    "email": "email@email.com",
+    "password": "password123*"
+  },
+  "weak_password_params": {
+    "email": "email@email.com",
+    "password": "pass"
+  }
+}
