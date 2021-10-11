@@ -60,6 +60,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
+    bcrypt (3.1.16)
     bootsnap (1.9.0)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -91,6 +92,8 @@ GEM
     nokogiri (1.12.4)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
+    password_strength (1.1.4)
+      activemodel
     puma (5.5.0)
       nio4r (~> 2.0)
     racc (1.5.2)
@@ -167,9 +170,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt
   bootsnap (>= 1.4.4)
   byebug
   listen (~> 3.3)
+  password_strength
   puma (~> 5.0)
   rack-cors
   rails (~> 6.1.4, >= 6.1.4.1)
